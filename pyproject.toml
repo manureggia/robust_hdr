@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robust-hdr"
+version = "0.1.0"
+description = "Robust HDR tools: exposure estimation (MST + ridge) and RAW merge without OpenCV."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Emanuele Reggiani"}]
+keywords = ["HDR", "exposure", "RAW", "image-processing", "photography"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+  "Topic :: Scientific/Engineering :: Image Processing"
+]
+
+dependencies = [
+  "numpy",
+  "rawpy",
+  "Pillow",
+  "exifread",
+  "openexr",
+  "imath",
+  "tqdm",
+]
+
+[project.scripts]
+robust-hdr = "robust_hdr.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["robust_hdr*"]
